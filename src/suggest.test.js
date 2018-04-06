@@ -2,20 +2,20 @@ const suggest = require('./suggest')
 
 describe('suggest', () => {
   describe('given an array of strings and string which we need to find', () => {
-    let haystack
-    let needle
+    let strArray
+    let pattern
     let result
 
     beforeEach(() => {
-      result = suggest(needle, haystack)
+      result = suggest(pattern, strArray)
     })
 
     describe('given that there is a strings in the array that matches substring', () => {
       beforeAll(() => {
-        haystack = [
+        strArray = [
           'foo'
         ]
-        needle = 'foo'
+        pattern = 'foo'
       })
       it('will return the string', () => {
         expect(result).toEqual(['foo'])
@@ -23,10 +23,10 @@ describe('suggest', () => {
     })
     describe('given that there is not a strings in the array that matches substring', () => {
       beforeAll(() => {
-        haystack = [
+        strArray = [
           'boo'
         ]
-        needle = 'foo'
+        pattern = 'foo'
       })
       it('will return an empty array', () => {
         expect(result).toEqual([])
@@ -35,7 +35,7 @@ describe('suggest', () => {
 
     describe('given that there are strings which match substring but have diffrent register', () => {
       beforeAll(() => {
-        haystack = [
+        strArray = [
           'foo',
           'Foo',
           'fOo',
@@ -44,45 +44,45 @@ describe('suggest', () => {
           'FOO',
           'fOO'
         ]
-        needle = 'foo'
+        pattern = 'foo'
       })
       it('will return all of them', () => {
-        expect(result).toEqual(haystack)
+        expect(result).toEqual(strArray)
       })
     })
 
     describe('given that there are strings which contains a substring', () => {
       beforeAll(() => {
-        haystack = [
+        strArray = [
           '123fooЯЫВ',
           'ASDFOOzx as'
         ]
-        needle = 'foo'
+        pattern = 'foo'
       })
       it('will return all of them', () => {
-        expect(result).toEqual(haystack)
+        expect(result).toEqual(strArray)
       })
     })
   })
 
   describe('given that MAX_COUNT parameter is passed', () => {
-    let haystack
-    let needle
+    let strArray
+    let pattern
     let maxCount
     let result
 
     beforeEach(() => {
-      result = suggest(needle, haystack, maxCount)
+      result = suggest(pattern, strArray, maxCount)
     })
 
     beforeAll(() => {
-      haystack = [
+      strArray = [
         'foo1',
         'foo2',
         'foo3',
         'foo4'
       ]
-      needle = 'foo'
+      pattern = 'foo'
       maxCount = 3
     })
 

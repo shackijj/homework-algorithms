@@ -4,20 +4,20 @@
  * M - кол-во элементов в строке
  * Память:
  * O(N), где N число символов в самой длинной строке в массиве
- * @param {string} needle
- * @param {string[]} haystack
+ * @param {string} pattern
+ * @param {string[]} strArray
  * @param {number=} MAX_COUNT
  */
-function suggest (needle, haystack, MAX_COUNT = 10) {
-  const length = haystack.length
+function suggest (pattern, strArray, MAX_COUNT = 10) {
+  const length = strArray.length
   const rc = []
-  const needleLower = needle.toLowerCase()
+  const patternLower = pattern.toLowerCase()
 
   for (let i = 0, c = 0; i < length && c < MAX_COUNT; i++) {
-    const stringLower = haystack[i].toLowerCase()
+    const stringLower = strArray[i].toLowerCase()
 
-    if (stringLower.indexOf(needleLower) > -1) {
-      rc.push(haystack[i])
+    if (stringLower.indexOf(patternLower) > -1) {
+      rc.push(strArray[i])
       c++
     }
   }
