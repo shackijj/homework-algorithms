@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "jest --watch",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "benchmark": "node benchmark/suggest.js"
   },
   "author": "",
   "license": "ISC",
