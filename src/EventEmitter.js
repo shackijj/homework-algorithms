@@ -3,7 +3,8 @@ class EventEmitter {
     this.events = {}
   }
   /**
-  * Амортизированная сложность O(1)
+  * Амортизированная вычислительная сложность O(1)
+  * Дополнительная память O(N), где N кол-во обработчиков
   * @param {string} event
   * @param {Function} handler
   */
@@ -21,7 +22,7 @@ class EventEmitter {
     }
   }
   /**
-   * Амортизированная сложность O(1)
+   * Амортизированная вычислительная сложность O(1)
    * @param {string} event
    * @param {Function} handler
    */
@@ -33,14 +34,13 @@ class EventEmitter {
   }
 
   /**
-   * Cложность O(N) без учета сложности обработчиков.
+   * Амортизированная вычислительная O(N) без учета сложности обработчиков.
    * @param {string} event
    */
   emit (event) {
     const handlersMap = this.events[event]
     if (handlersMap) {
       for (let handler of handlersMap.values()) {
-        /** Обработчик можно вызвать асинхронно setTimeout(handler, 0) */
         handler()
       }
     }
