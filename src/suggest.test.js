@@ -1,4 +1,4 @@
-const suggest = require('./suggest')
+const { suggest, suggestUsingPreparedArray } = require('./suggest')
 
 describe('suggest', () => {
   describe('given an array of strings and string which we need to find', () => {
@@ -92,6 +92,29 @@ describe('suggest', () => {
 
     it('will return first 3 found items', () => {
       expect(result).toEqual(['foo1', 'foo2', 'foo3'])
+    })
+  })
+})
+
+describe('suggestUsingPreparedArray', () => {
+  describe('given an array of strings and string which we need to find', () => {
+    let strArray
+    let pattern
+    let result
+
+    beforeEach(() => {
+      result = suggestUsingPreparedArray(pattern, strArray)
+    })
+    describe('given that there is a strings in the array that matches substring', () => {
+      beforeAll(() => {
+        strArray = [
+          {lowered: 'foo', original: 'foo'}
+        ]
+        pattern = 'foo'
+      })
+      it('will return the string', () => {
+        expect(result).toEqual(['foo'])
+      })
     })
   })
 })
