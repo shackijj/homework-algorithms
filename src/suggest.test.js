@@ -10,7 +10,7 @@ describe('suggest', () => {
       result = suggest(pattern, strArray)
     })
 
-    describe('given that there is a strings in the array that matches substring', () => {
+    describe('given that there is a string in the array that matches substring', () => {
       beforeAll(() => {
         strArray = [
           'foo'
@@ -21,7 +21,7 @@ describe('suggest', () => {
         expect(result).toEqual(['foo'])
       })
     })
-    describe('given that there is not a strings in the array that matches substring', () => {
+    describe('given that there is not a string in the array that matches substring', () => {
       beforeAll(() => {
         strArray = [
           'boo'
