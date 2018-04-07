@@ -33,7 +33,7 @@ function suggest (pattern, strArray, MAX_COUNT = 10) {
  * N - кол-во элементов в массиве
  * M - кол-во символов в строке массива
  * @param {string} pattern
- * @param {{lowered: string, original: string}} objArray
+ * @param {{lowered: string, original: string}[]} objArray
  * @param {number=} MAX_COUNT
  */
 function suggestUsingPreparedArray (pattern, objArray, MAX_COUNT = 10) {
